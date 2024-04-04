@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>TIL-240404</h1>
+    <h2>변수</h2>
+    <h3>var, let, const</h3>
+    <pre>
+      <code>
+        // 여러가지 변수 선언자.
+        var a = 1; 
+        let b = 2; 
+        const c = 3;
+
+        // var와 let은 재할당이 가능하다.
+        a = 4;
+        b = 5;
+
+        // const는 재할당이 불가능하다.
+        c = 6; <span style="color: red;">// error</span>
+      </code>
+    </pre>
+    <p></p>
+    <h2>데이터 타입</h2>
+    <h3>원시 자료형</h3>
+    <pre>
+      <code>
+        // 원시 자료형
+        let str = 'string';
+        let num = 1;
+        let bool = true;
+        let n = null;
+        let u = undefined;
+        let sym = Symbol('me');
+      </code>
+    </pre>
+    <h3>참조 자료형</h3>
+    <pre>
+      <code>
+        // 참조 자료형
+        let obj = {
+          name: '길동',
+          age: 27,
+        };
+        let arr = [1, 2, 3];
+      </code>
+    </pre>
+    <h2>함수</h2>
+    <h3>함수 정의 방법</h3>
+    <pre>
+      <code>
+        // 함수 선언문
+        function add(a, b) {
+          return a + b;
+        }
+        // 함수 표현식
+        const sub = function (a, b) {
+          return a - b;
+        };
+        // 화살표 함수
+        const mul = (a, b) => a * b;
+        // 즉시 실행 함수
+        (function () {
+          console.log('즉시 실행 함수');
+        })();
+      </code>
+    </pre>
+    <button class="back-btn">뒤로가기</button>
+    <script>
+      const backBtn = document.querySelector(".back-btn");
+      backBtn.addEventListener("click", () => {
+        window.history.back();
+      });
+    </script>
+  </body>
+</html>
