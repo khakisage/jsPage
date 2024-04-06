@@ -1,0 +1,6 @@
+[submodule "submodule_exam1"]
+	path = submodule_exam1
+	url = https://github.com/khakisage/submodule_exam1.git
+[submodule "submodule_exam2"]
+	path = submodule_exam2
+	url = https://github.com/khakisage/submodule_exam2.git
