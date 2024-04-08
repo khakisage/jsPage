@@ -43,6 +43,17 @@
       <h3>Mouse & Pointer Events</h3>
       <div id="mousePointerDiv" style="width: 200px; height: 100px; background-color: lightblue">Mouse over or touch me</div>
     </div>
+    <div>
+      <h3>JavaScript Animations</h3>
+      <div id="animationDiv" style="width: 100px; height: 100px; background-color: lightblue; position: relative"></div>
+    </div>
+    <div>
+      <h3 id="scrollHeader" data-px="">Scroll Event</h3>
+      <p id="scrollValue">Scrolled: 0px</p>
+      <div id="myScrollDiv" style="width: 200px; height: 300px; background-color: lightblue; overflow: auto">
+        <div style="height: 600px; background-color: #eee">Scroll me</div>
+      </div>
+    </div>
   </body>
   <script>
     document.getElementById("myButton").addEventListener("click", function () {
@@ -107,6 +118,31 @@
     document.getElementById("mousePointerDiv").addEventListener("pointerout", function () {
       this.style.backgroundColor = "lightblue";
       console.log("Pointer out");
+    });
+
+    // JavaScript Animations
+    let animationDiv = document.getElementById("animationDiv");
+    let position = 0;
+    let direction = 1;
+    function animate() {
+      position += direction * 2;
+      animationDiv.style.left = position + "px";
+      if (position >= 200 || position <= 0) {
+        direction *= -1;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Scroll Event inside myScrollDiv
+    document.getElementById("myScrollDiv").addEventListener("scroll", function () {
+      let scrolled = this.scrollTop;
+      console.log("Scrolled: " + scrolled + "px");
+
+      // Assign the scroll value to data-px attribute
+      document.getElementById("scrollHeader").setAttribute("data-px", scrolled + "px");
+      // Update the text to show scrolled value
+      document.getElementById("scrollValue").textContent = "Scrolled: " + scrolled + "px";
     });
   </script>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" name="textField" placeholder="Enter Text" />
+      <input type="checkbox" name="checkBox" />
+      <input type="radio" name="radioButton" value="Option1" />Option 1 <input type="radio" name="radioButton" value="Option2" />Option 2
+      <button type="button" id="submitForm">Submit</button>
+      <button type="button" id="resetForm">Reset</button>
+    </form>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let form = document.getElementById("myForm");
+
+        // 'change' event
+        form.addEventListener("change", (event) => {
+          console.log("change event:", event.target);
+        });
+
+        // 'input' event
+        form.addEventListener("input", (event) => {
+          console.log("input event:", event.target);
+        });
+
+        // 'cut' event
+        form.addEventListener("cut", (event) => {
+          console.log("cut event:", event.target);
+        });
+
+        // 'copy' event
+        form.addEventListener("copy", (event) => {
+          console.log("copy event:", event.target);
+        });
+
+        // 'paste' event
+        form.addEventListener("paste", (event) => {
+          console.log("paste event:", event.target);
+        });
+
+        // 'submit' event
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          console.log("submit event:", event.target);
+        });
+
+        // 폼의 프로퍼티 출력
+        console.log("Form elements:", form.elements);
+        console.log("Form action:", form.action);
+        console.log("Form method:", form.method);
+
+        // 'submitForm' 버튼 클릭 이벤트 핸들러: AJAX 요청을 전송합니다.
+        document.getElementById("submitForm").addEventListener("click", function () {
+          let formData = new FormData(form);
+          let jsonObject = {};
+
+          // 폼 데이터를 JSON 객체로 변환
+          for (const [key, value] of formData.entries()) {
+            jsonObject[key] = value;
+            console.log(key, value);
+          }
+
+          // AJAX 요청 전송
+          fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonObject),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+        document.getElementById("resetForm").addEventListener("click", function () {
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>

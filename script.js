@@ -11,3 +11,10 @@ for (let i = 0; i < btn2.length; i++) {
     location.href = "til0408.html";
   });
 }
+
+let btn3 = document.getElementsByClassName("fetch");
+for (let i = 0; i < btn3.length; i++) {
+  btn3[i].addEventListener("click", function () {
+    location.href = "fetch.html";
+  });
+}
