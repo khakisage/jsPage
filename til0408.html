@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>TIL-240408</h1>
+    <div>
+      <h2>Click Event</h2>
+      <button id="myButton">Click Me</button>
+    </div>
+    <div>
+      <h2>Mouse Event</h2>
+      <div id="myDiv" style="width: 200; height: 100; background-color: black">MouseOver</div>
+    </div>
+    <div>
+      <h3>Keyboard Event</h3>
+      <input type="text" id="myInput" placeholder="Press Enter" />
+    </div>
+    <div>
+      <h3>Focus Event</h3>
+      <input type="text" id="focusInput" placeholder="Focus here" />
+    </div>
+    <div>
+      <h3>Form Event</h3>
+      <form id="myForm">
+        <input type="text" name="username" placeholder="Username" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div>
+      <h3>Keyboard: keydown and keyup</h3>
+      <input type="text" id="keyboardInput" placeholder="Type something" />
+    </div>
+    <div>
+      <h3>Touch Event</h3>
+      <div id="myTouchArea" style="width: 200px; height: 40px; background-color: lightblue">Touch Me</div>
+    </div>
+    <div>
+      <h3>Mouse & Pointer Events</h3>
+      <div id="mousePointerDiv" style="width: 200px; height: 100px; background-color: lightblue">Mouse over or touch me</div>
+    </div>
+  </body>
+  <script>
+    document.getElementById("myButton").addEventListener("click", function () {
+      console.log("click");
+    });
+    document.getElementById("myDiv").addEventListener("mouseover", function () {
+      this.style.backgroundColor = "lightgreen";
+      console.log("lightgreen");
+    });
+    document.getElementById("myDiv").addEventListener("mouseout", function () {
+      this.style.backgroundColor = "lightblue";
+      console.log("lightblue");
+    });
+
+    // Keyboard Event
+    document.getElementById("myInput").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        console.log("Enter key pressed!");
+      }
+    });
+    // Focus Event
+    document.getElementById("focusInput").addEventListener("focus", function () {
+      this.style.backgroundColor = "#0000ff";
+      this.style.color = "#fff";
+    });
+
+    document.getElementById("focusInput").addEventListener("blur", function () {
+      this.style.backgroundColor = "white";
+    });
+
+    // Form Event
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var username = this.elements["username"].value;
+      console.log("Form submitted by: " + username);
+    });
+
+    // Keyboard: keydown and keyup
+    document.getElementById("keyboardInput").addEventListener("keydown", function (event) {
+      console.log("Key down: " + event.key);
+    });
+
+    document.getElementById("keyboardInput").addEventListener("keyup", function (event) {
+      console.log("Key up: " + event.key);
+    });
+
+    // Touch Event
+    document.getElementById("myTouchArea").addEventListener("touchstart", function (event) {
+      console.log("Touch started!");
+    });
+
+    document.getElementById("myTouchArea").addEventListener("touchend", function (event) {
+      console.log("Touch ended!");
+    });
+
+    // Mouse & Pointer Events
+    document.getElementById("mousePointerDiv").addEventListener("pointerover", function () {
+      this.style.backgroundColor = "lightgreen";
+      console.log("Pointer over");
+    });
+
+    document.getElementById("mousePointerDiv").addEventListener("pointerout", function () {
+      this.style.backgroundColor = "lightblue";
+      console.log("Pointer out");
+    });
+  </script>
+</html>
