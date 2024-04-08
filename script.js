@@ -1,9 +1,13 @@
-let btn1 = document.querySelector(".move0404");
-btn1.addEventListener("click", function () {
-  location.href = "til0404.html";
-});
+let btn1 = document.getElementsByClassName("move0404");
+for (let i = 0; i < btn1.length; i++) {
+  btn1[i].addEventListener("click", function () {
+    location.href = "til0404.html";
+  });
+}
 
-let btn2 = document.querySelector(".move0408");
-btn2.addEventListener("click", function () {
-  location.href = "til0408.html";
-});
+let btn2 = document.getElementsByClassName("move0408");
+for (let i = 0; i < btn2.length; i++) {
+  btn2[i].addEventListener("click", function () {
+    location.href = "til0408.html";
+  });
+}
